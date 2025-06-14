@@ -11,7 +11,7 @@ export default function AboutDetail() {
 
   return (
     <section
-      className="relative py-20 px-4 sm:px-6 text-green-900 w-screen -ml-[50vw] left-[50%] bg-cover bg-center"
+      className="relative py-20 px-4 sm:px-6 text-white w-screen -ml-[50vw] left-[50%] bg-cover bg-center"
       style={{
         backgroundImage: `url(${aboutDetailImg})`,
       }}
@@ -34,10 +34,10 @@ export default function AboutDetail() {
         }
       `}</style>
 
-      <div className="relative z-10 max-w-4xl mx-auto rounded-3xl p-6 sm:p-10 md:p-12 bg-white/40 backdrop-blur-xl shadow-2xl space-y-6 sm:space-y-8 hover:scale-[1.01] transition-transform duration-300">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-serif drop-shadow-md text-green-900">
+      <div className="relative z-10 max-w-4xl mx-auto rounded-3xl p-6 sm:p-10 md:p-12 bg-white/20 backdrop-blur-xl shadow-2xl space-y-6 sm:space-y-8 hover:scale-[1.01] transition-transform duration-300">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-serif drop-shadow-md text-white">
           About{" "}
-          <span className="text-yellow-500 tracking-wide drop-shadow-md text-lg sm:text-xl md:text-2xl">
+          <span className="text-yellow-400 tracking-wide drop-shadow-md text-lg sm:text-xl md:text-2xl">
             Grove Link Consult
           </span>
         </h2>
@@ -62,11 +62,11 @@ export default function AboutDetail() {
         ))}
 
         <p
-          className="text-sm sm:text-base md:text-lg font-semibold tracking-wide text-yellow-600 border-l-8 pl-5 pt-4 slideInLeftFade"
+          className="text-sm sm:text-base md:text-lg font-semibold tracking-wide border-l-8 pl-5 pt-4 slideInLeftFade text-yellow-400"
           style={{ borderColor: "hsl(45, 90%, 55%)" }}
         >
           Partner with{" "}
-          <span className="text-yellow-500 font-bold">Grove Consult</span> and
+          <span className="text-yellow-400 font-bold">Grove Consult</span> and
           let’s create lasting impact together.
         </p>
       </div>
