@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: <ChartBar className="text-white" />,
+    icon: <ChartBar />,
     title: "Strategy & Business Advisory",
     description:
       "We help you define your direction, strengthen operations, and make informed decisions.",
@@ -16,7 +16,7 @@ const services = [
     ],
   },
   {
-    icon: <BookOpen className="text-white" />,
+    icon: <BookOpen />,
     title: "Research & Policy Analysis",
     description:
       "We conduct rigorous, context-aware research to inform policy, program, and investment decisions.",
@@ -28,7 +28,7 @@ const services = [
     ],
   },
   {
-    icon: <Hammer className="text-white" />,
+    icon: <Hammer />,
     title: "Project Design & Implementation",
     description:
       "From concept to execution, we support high-impact initiatives that deliver measurable outcomes.",
@@ -40,7 +40,7 @@ const services = [
     ],
   },
   {
-    icon: <Brain className="text-white" />,
+    icon: <Brain />,
     title: "Capacity Building & Training",
     description:
       "We build institutional and individual capacity through targeted training and coaching.",
@@ -52,7 +52,7 @@ const services = [
     ],
   },
   {
-    icon: <Handshake className="text-white" />,
+    icon: <Handshake />,
     title: "Partnership Development & Stakeholder Engagement",
     description:
       "We facilitate collaboration between sectors, aligning interests for shared success.",
@@ -81,29 +81,28 @@ const cardVariants = {
 
 export default function ServicesDetail() {
   return (
-    <section className="w-full py-16 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-2xl max-w-screen-sm md:max-w-none mx-auto">
-      <div className="text-center mb-14 max-w-3xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-green-900 mb-4 tracking-tight drop-shadow-sm">
+    <section className="w-full py-12 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-2xl max-w-screen-xl mx-auto">
+      <div className="text-center mb-12 max-w-3xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-green-900 mb-3 tracking-tight drop-shadow-sm">
           Our Services
         </h2>
-        <p className="text-xl text-green-800 font-semibold">
+        <p className="text-lg sm:text-xl text-green-800 font-semibold">
           Strategic Solutions for Sustainable Growth
         </p>
-        <p className="text-base text-green-700 mt-3 max-w-xl mx-auto leading-relaxed tracking-wide">
+        <p className="text-base text-green-700 mt-3 max-w-xl mx-auto leading-relaxed">
           At Grove Consult, we offer consulting services to help organizations
           achieve clarity, resilience, and success. Our approach is
           collaborative, evidence-based, and impact-driven.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10 px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-2 sm:px-4">
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className={`p-8 bg-gradient-to-tr from-white to-green-50 border-l-8 rounded-3xl shadow-lg
-              hover:shadow-2xl hover:scale-[1.04] transition-transform duration-300 ease-in-out
-              cursor-pointer
-              ${service.fullWidth ? "md:col-span-2" : ""}`}
+            className={`p-6 sm:p-8 bg-white border-l-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ${
+              service.fullWidth ? "md:col-span-2" : ""
+            }`}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -111,14 +110,14 @@ export default function ServicesDetail() {
             custom={index}
             style={{
               borderColor: `hsl(${120 - index * 20}, 80%, 45%)`,
-              boxShadow: `0 4px 12px -3px hsla(${
+              boxShadow: `0 3px 10px -2px hsla(${
                 120 - index * 20
-              }, 80%, 45%, 0.4)`,
+              }, 80%, 45%, 0.3)`,
             }}
           >
-            <div className="flex items-center gap-4 mb-5">
+            <div className="flex items-start gap-4 mb-4">
               <div
-                className="p-3 md:p-4 rounded-full shadow-md"
+                className="p-3 sm:p-4 rounded-full shadow"
                 style={{
                   background: `linear-gradient(135deg, hsl(${
                     120 - index * 20
@@ -126,18 +125,18 @@ export default function ServicesDetail() {
                 }}
               >
                 {React.cloneElement(service.icon, {
-                  className: "w-5 h-5 md:w-7 md:h-7 text-white",
+                  className: "w-5 h-5 sm:w-6 sm:h-6 text-white",
                 })}
               </div>
-              <h3 className="text-lg md:text-2xl font-bold text-green-900 drop-shadow-sm">
+              <h3 className="text-lg sm:text-xl font-bold text-green-900 leading-tight">
                 {service.title}
               </h3>
             </div>
 
-            <p className="mb-5 text-green-800 text-base leading-relaxed tracking-wide">
+            <p className="mb-4 text-green-800 text-sm sm:text-base leading-relaxed">
               {service.description}
             </p>
-            <ul className="list-disc list-inside text-green-700 space-y-1.5 text-sm pl-2 tracking-wide">
+            <ul className="list-disc list-inside text-green-700 text-sm sm:text-base space-y-1">
               {service.points.map((point, i) => (
                 <li key={i}>{point}</li>
               ))}

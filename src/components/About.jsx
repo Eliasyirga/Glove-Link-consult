@@ -65,7 +65,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-green-50 via-white to-green-100">
+    <section className="py-20 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-green-50 via-white to-green-100 min-h-screen">
       <div className="max-w-screen-lg mx-auto backdrop-blur-xl bg-white/70 shadow-2xl border border-green-100 rounded-3xl p-6 sm:p-12">
         <h2
           data-aos="zoom-in"
@@ -75,21 +75,21 @@ export default function AboutSection() {
         </h2>
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-10 sm:gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-20">
           {cards.map((card, i) => (
             <div
               key={card.title}
               data-aos={i % 2 === 0 ? "fade-up-right" : "fade-up-left"}
-              className="relative h-96 rounded-3xl shadow-xl overflow-hidden transform transition duration-500 hover:scale-[1.04] group bg-cover bg-center flex items-center justify-center"
+              className="relative h-[22rem] sm:h-[28rem] rounded-3xl shadow-xl overflow-hidden transform transition duration-500 hover:scale-[1.04] group bg-cover bg-center flex items-center justify-center"
               style={{ backgroundImage: `url(${card.bg})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-black/20 backdrop-blur-[1px] group-hover:backdrop-blur-[2px] transition-all" />
               <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 sm:px-8 text-center text-white">
                 <div className="mb-4 animate-bounce-slow">{card.icon}</div>
-                <h3 className="text-3xl font-bold mb-4 drop-shadow-md">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 drop-shadow-md">
                   {card.title}
                 </h3>
-                <p className="text-base md:text-lg leading-relaxed text-white/90 drop-shadow-sm">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-white/90 drop-shadow-sm">
                   {card.text}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function AboutSection() {
           Our Core Values
         </h3>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-md mx-auto">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-md mx-auto">
           {values.map((value, index) => (
             <li
               key={index}

@@ -15,7 +15,10 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="font-sans text-gray-800 bg-white pt-24">
+      <div
+        style={{ fontFamily: "'Inter', sans-serif" }}
+        className="text-gray-800 bg-white"
+      >
         <Element name="home">
           <HeroSection />
         </Element>

@@ -1,49 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import aboutDetailImg from "../assets/about.jpg";
 
 export default function AboutDetail() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
   useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup listener on unmount
-    return () => window.removeEventListener("resize", handleResize);
+    const paragraphs = document.querySelectorAll(".slideInLeftFade");
+    paragraphs.forEach((el, index) => {
+      el.style.animationDelay = `${index * 0.3}s`;
+    });
   }, []);
-
-  // Define font sizes based on screen width
-  // You can adjust these breakpoints & sizes as you want
-  const getFontSize = (index) => {
-    if (screenWidth < 480) return "0.75rem"; // mobile small font
-    if (screenWidth < 768) return "0.875rem"; // small tablets
-    return "1rem"; // default base font size for larger screens
-  };
-
-  const getHeadingSize = () => {
-    if (screenWidth < 480) return "1.5rem";
-    if (screenWidth < 768) return "1.875rem";
-    return "3rem";
-  };
-
-  const getHighlightSize = () => {
-    if (screenWidth < 480) return "0.875rem";
-    if (screenWidth < 768) return "1rem";
-    return "1.125rem";
-  };
 
   return (
     <section
-      className="py-24 px-6 relative text-green-900"
+      className="relative py-20 px-4 sm:px-6 text-green-900 w-screen -ml-[50vw] left-[50%] bg-cover bg-center"
       style={{
         backgroundImage: `url(${aboutDetailImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        width: "100vw",
-        left: "50%",
-        right: "50%",
-        marginLeft: "-50vw",
-        marginRight: "-50vw",
       }}
     >
       <div className="absolute inset-0 bg-black/60 z-0" />
@@ -64,28 +34,15 @@ export default function AboutDetail() {
         }
       `}</style>
 
-      <div
-        className="relative z-10 max-w-4xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl space-y-8 md:space-y-10 transform transition-transform duration-300 hover:scale-[1.02]"
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.4)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-        }}
-      >
-        <h2
-          className="font-serif font-extrabold text-green-900 drop-shadow-md mb-2"
-          style={{ fontSize: getHeadingSize() }}
-        >
+      <div className="relative z-10 max-w-4xl mx-auto rounded-3xl p-6 sm:p-10 md:p-12 bg-white/40 backdrop-blur-xl shadow-2xl space-y-6 sm:space-y-8 hover:scale-[1.01] transition-transform duration-300">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-serif drop-shadow-md text-green-900">
           About{" "}
-          <span
-            className="text-yellow-500 tracking-wide drop-shadow-md"
-            style={{ fontSize: getHighlightSize() }}
-          >
+          <span className="text-yellow-500 tracking-wide drop-shadow-md text-lg sm:text-xl md:text-2xl">
             Grove Link Consult
           </span>
         </h2>
 
-        <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-400 rounded-full mb-6 md:mb-8 shadow-lg" />
+        <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-400 rounded-full shadow-lg" />
 
         {[
           `At Grove Link Consult, we believe that lasting impact is created through strong partnerships and thoughtful solutions. Founded on the principles of integrity, collaboration, and innovation, we are dedicated to helping organizations navigate complex challenges and unlock their full potential.`,
@@ -95,11 +52,9 @@ export default function AboutDetail() {
         ].map((text, index) => (
           <p
             key={index}
-            className="leading-relaxed text-green-900 text-justify tracking-wide border-l-8 pl-5 slideInLeftFade"
+            className={`text-sm sm:text-base md:text-lg leading-relaxed tracking-wide text-justify border-l-8 pl-5 slideInLeftFade`}
             style={{
               borderColor: `hsl(${120 - index * 20}, 70%, 50%)`,
-              animationDelay: `${index * 0.3}s`,
-              fontSize: getFontSize(index),
             }}
           >
             {text}
@@ -107,17 +62,8 @@ export default function AboutDetail() {
         ))}
 
         <p
-          className="text-yellow-600 font-semibold tracking-wide pt-4 drop-shadow-md border-l-8 pl-5 slideInLeftFade"
-          style={{
-            borderColor: "hsl(45, 90%, 55%)",
-            animationDelay: "1.2s",
-            fontSize:
-              screenWidth < 480
-                ? "0.75rem"
-                : screenWidth < 768
-                ? "0.875rem"
-                : "1.125rem",
-          }}
+          className="text-sm sm:text-base md:text-lg font-semibold tracking-wide text-yellow-600 border-l-8 pl-5 pt-4 slideInLeftFade"
+          style={{ borderColor: "hsl(45, 90%, 55%)" }}
         >
           Partner with{" "}
           <span className="text-yellow-500 font-bold">Grove Consult</span> and
