@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export default function Footer() {
+  const links = ["home", "about", "services", "contact"];
+
   return (
     <footer className="relative bg-gradient-to-tr from-green-50 via-green-100 to-lime-100 text-green-900 py-24 px-8 sm:px-16 lg:px-32 font-sans overflow-hidden shadow-xl">
       {/* Background decorative blurred circles */}
@@ -71,18 +74,22 @@ export default function Footer() {
             Quick Links
           </h3>
           <ul className="max-w-xs mx-auto md:mx-0 space-y-8 text-green-900 font-semibold text-lg">
-            {["About Us", "Services", "Our Team", "Contact"].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
-                  className="relative group inline-block hover:text-lime-600 transition-colors duration-300"
+            {links.map((link) => (
+              <li key={link}>
+                <Link
+                  to={link}
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  offset={-80}
+                  className="relative group inline-block cursor-pointer hover:text-lime-600 transition-colors duration-300"
                 >
-                  {item}
+                  {link.charAt(0).toUpperCase() + link.slice(1)}
                   <span
                     className="absolute left-0 -bottom-1 w-0 h-0.5 bg-lime-600 rounded transition-all group-hover:w-full"
                     aria-hidden="true"
                   />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -131,8 +138,19 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Scroll to Top Button */}
+      <div className="mt-8 text-center">
+        <button
+          onClick={() => scroll.scrollToTop({ duration: 600 })}
+          className="text-green-700 font-semibold hover:text-lime-600 transition-colors duration-300 underline cursor-pointer"
+          aria-label="Scroll to top"
+        >
+          Back to Top ↑
+        </button>
+      </div>
+
       {/* Bottom Bar */}
-      <div className="mt-28 border-t border-lime-400 pt-6 text-center text-green-700 text-sm select-none tracking-widest font-semibold relative z-10">
+      <div className="mt-8 border-t border-lime-400 pt-6 text-center text-green-700 text-sm select-none tracking-widest font-semibold relative z-10">
         © {new Date().getFullYear()} Grove Link Consult. All rights reserved.
       </div>
     </footer>

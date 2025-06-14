@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: <ChartBar className="w-7 h-7 text-white" />,
+    icon: <ChartBar className="text-white" />,
     title: "Strategy & Business Advisory",
     description:
       "We help you define your direction, strengthen operations, and make informed decisions.",
@@ -16,7 +16,7 @@ const services = [
     ],
   },
   {
-    icon: <BookOpen className="w-7 h-7 text-white" />,
+    icon: <BookOpen className="text-white" />,
     title: "Research & Policy Analysis",
     description:
       "We conduct rigorous, context-aware research to inform policy, program, and investment decisions.",
@@ -28,7 +28,7 @@ const services = [
     ],
   },
   {
-    icon: <Hammer className="w-7 h-7 text-white" />,
+    icon: <Hammer className="text-white" />,
     title: "Project Design & Implementation",
     description:
       "From concept to execution, we support high-impact initiatives that deliver measurable outcomes.",
@@ -40,7 +40,7 @@ const services = [
     ],
   },
   {
-    icon: <Brain className="w-7 h-7 text-white" />,
+    icon: <Brain className="text-white" />,
     title: "Capacity Building & Training",
     description:
       "We build institutional and individual capacity through targeted training and coaching.",
@@ -52,7 +52,7 @@ const services = [
     ],
   },
   {
-    icon: <Handshake className="w-7 h-7 text-white" />,
+    icon: <Handshake className="text-white" />,
     title: "Partnership Development & Stakeholder Engagement",
     description:
       "We facilitate collaboration between sectors, aligning interests for shared success.",
@@ -81,7 +81,7 @@ const cardVariants = {
 
 export default function ServicesDetail() {
   return (
-    <section className="w-full py-16 px-6 bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-2xl">
+    <section className="w-full py-16 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-2xl max-w-screen-sm md:max-w-none mx-auto">
       <div className="text-center mb-14 max-w-3xl mx-auto">
         <h2 className="text-4xl font-extrabold text-green-900 mb-4 tracking-tight drop-shadow-sm">
           Our Services
@@ -116,18 +116,20 @@ export default function ServicesDetail() {
               }, 80%, 45%, 0.4)`,
             }}
           >
-            <div className="flex items-center gap-5 mb-5">
+            <div className="flex items-center gap-4 mb-5">
               <div
-                className="p-4 rounded-full shadow-md"
+                className="p-3 md:p-4 rounded-full shadow-md"
                 style={{
                   background: `linear-gradient(135deg, hsl(${
                     120 - index * 20
                   }, 90%, 55%), hsl(${120 - index * 20}, 70%, 40%))`,
                 }}
               >
-                {service.icon}
+                {React.cloneElement(service.icon, {
+                  className: "w-5 h-5 md:w-7 md:h-7 text-white",
+                })}
               </div>
-              <h3 className="text-2xl font-bold text-green-900 drop-shadow-sm">
+              <h3 className="text-lg md:text-2xl font-bold text-green-900 drop-shadow-sm">
                 {service.title}
               </h3>
             </div>

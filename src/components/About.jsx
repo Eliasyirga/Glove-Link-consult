@@ -65,8 +65,8 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-green-50 via-white to-green-100">
-      <div className="max-w-6xl mx-auto backdrop-blur-xl bg-white/70 shadow-2xl border border-green-100 rounded-3xl p-12">
+    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-green-50 via-white to-green-100">
+      <div className="max-w-screen-lg mx-auto backdrop-blur-xl bg-white/70 shadow-2xl border border-green-100 rounded-3xl p-6 sm:p-12">
         <h2
           data-aos="zoom-in"
           className="text-4xl md:text-5xl font-bold text-center text-green-700 mb-16"
@@ -75,7 +75,7 @@ export default function AboutSection() {
         </h2>
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid md:grid-cols-2 gap-10 sm:gap-12 mb-20">
           {cards.map((card, i) => (
             <div
               key={card.title}
@@ -84,7 +84,7 @@ export default function AboutSection() {
               style={{ backgroundImage: `url(${card.bg})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-black/20 backdrop-blur-[1px] group-hover:backdrop-blur-[2px] transition-all" />
-              <div className="relative z-10 flex flex-col items-center justify-center h-full px-8 text-center text-white">
+              <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 sm:px-8 text-center text-white">
                 <div className="mb-4 animate-bounce-slow">{card.icon}</div>
                 <h3 className="text-3xl font-bold mb-4 drop-shadow-md">
                   {card.title}
@@ -105,13 +105,13 @@ export default function AboutSection() {
           Our Core Values
         </h3>
 
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-md mx-auto">
           {values.map((value, index) => (
             <li
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="flex items-start gap-4 bg-white/90 border border-green-200 rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300"
+              className="flex items-start gap-4 bg-white/90 border border-green-200 rounded-2xl shadow-md p-5 hover:shadow-xl transition duration-300"
             >
               <div className="h-10 w-10 flex items-center justify-center rounded-full bg-green-600 text-white shadow-md">
                 {value.icon}

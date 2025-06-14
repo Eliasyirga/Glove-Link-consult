@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import aboutDetailImg from "../assets/about.jpg";
 
 export default function AboutDetail() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Define font sizes based on screen width
+  // You can adjust these breakpoints & sizes as you want
+  const getFontSize = (index) => {
+    if (screenWidth < 480) return "0.75rem"; // mobile small font
+    if (screenWidth < 768) return "0.875rem"; // small tablets
+    return "1rem"; // default base font size for larger screens
+  };
+
+  const getHeadingSize = () => {
+    if (screenWidth < 480) return "1.5rem";
+    if (screenWidth < 768) return "1.875rem";
+    return "3rem";
+  };
+
+  const getHighlightSize = () => {
+    if (screenWidth < 480) return "0.875rem";
+    if (screenWidth < 768) return "1rem";
+    return "1.125rem";
+  };
+
   return (
     <section
       className="py-24 px-6 relative text-green-900"
@@ -16,10 +46,8 @@ export default function AboutDetail() {
         marginRight: "-50vw",
       }}
     >
-      {/* Dark overlay full width */}
       <div className="absolute inset-0 bg-black/60 z-0" />
 
-      {/* Add keyframes style for animation */}
       <style>{`
         @keyframes slideInLeftFade {
           0% {
@@ -36,7 +64,6 @@ export default function AboutDetail() {
         }
       `}</style>
 
-      {/* Card container with stronger blur and more translucent background */}
       <div
         className="relative z-10 max-w-4xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl space-y-8 md:space-y-10 transform transition-transform duration-300 hover:scale-[1.02]"
         style={{
@@ -45,12 +72,19 @@ export default function AboutDetail() {
           WebkitBackdropFilter: "blur(20px)",
         }}
       >
-        <h2 className="text-3xl md:text-5xl font-serif font-extrabold text-green-900 drop-shadow-md mb-2">
+        <h2
+          className="font-serif font-extrabold text-green-900 drop-shadow-md mb-2"
+          style={{ fontSize: getHeadingSize() }}
+        >
           About{" "}
-          <span className="text-yellow-500 tracking-wide drop-shadow-md">
+          <span
+            className="text-yellow-500 tracking-wide drop-shadow-md"
+            style={{ fontSize: getHighlightSize() }}
+          >
             Grove Link Consult
           </span>
         </h2>
+
         <div className="h-1 w-20 md:w-24 bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-400 rounded-full mb-6 md:mb-8 shadow-lg" />
 
         {[
@@ -61,10 +95,11 @@ export default function AboutDetail() {
         ].map((text, index) => (
           <p
             key={index}
-            className={`leading-relaxed text-sm md:text-base text-green-900 text-justify tracking-wide border-l-8 pl-5 slideInLeftFade`}
+            className="leading-relaxed text-green-900 text-justify tracking-wide border-l-8 pl-5 slideInLeftFade"
             style={{
               borderColor: `hsl(${120 - index * 20}, 70%, 50%)`,
               animationDelay: `${index * 0.3}s`,
+              fontSize: getFontSize(index),
             }}
           >
             {text}
@@ -72,10 +107,16 @@ export default function AboutDetail() {
         ))}
 
         <p
-          className="text-yellow-600 font-semibold text-base md:text-lg tracking-wide pt-4 drop-shadow-md border-l-8 pl-5 slideInLeftFade"
+          className="text-yellow-600 font-semibold tracking-wide pt-4 drop-shadow-md border-l-8 pl-5 slideInLeftFade"
           style={{
             borderColor: "hsl(45, 90%, 55%)",
             animationDelay: "1.2s",
+            fontSize:
+              screenWidth < 480
+                ? "0.75rem"
+                : screenWidth < 768
+                ? "0.875rem"
+                : "1.125rem",
           }}
         >
           Partner with{" "}

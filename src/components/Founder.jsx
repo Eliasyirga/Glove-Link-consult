@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const expertiseList = [
   "Credit risk assessment and restructuring",
@@ -22,72 +23,132 @@ const bioParagraphs = [
 ];
 
 export default function Founder() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 640);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % bioParagraphs.length);
+  };
+
+  const handleBack = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? bioParagraphs.length - 1 : prev - 1
+    );
+  };
+
   return (
-    <section className="max-w-6xl my-8 mx-auto px-6 sm:px-12 py-20 bg-gradient-to-br from-green-50 via-white to-yellow-50 rounded-3xl shadow-2xl">
-      {/* Header with image side-by-side */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10 mb-16">
-        <div className="flex-1 text-center sm:text-left">
-          <h2 className="text-5xl font-extrabold text-green-900 tracking-wide mb-3 drop-shadow-md">
-            Netsanet Yirga
-          </h2>
-          <p className="text-2xl font-semibold text-yellow-600 mb-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-            Founder & CEO, Grove Link Consult
-          </p>
-          <p className="text-md sm:text-lg text-green-900 font-semibold max-w-md mx-auto sm:mx-0 leading-relaxed drop-shadow">
-            Certified Management Consultant | Strategic Advisor | Former
-            Executive Banker and Lecturer
-          </p>
+    <section
+      className="w-screen py-24 bg-gradient-to-tr from-green-100 via-white to-yellow-100 shadow-xl"
+      style={{ overflowX: "hidden" }} // prevent horizontal scroll if any
+    >
+      <div className="max-w-6xl mx-auto px-6 sm:px-12 rounded-3xl">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-12 mb-20">
+          {/* Text Info */}
+          <div className="flex-1 text-center sm:text-left space-y-4">
+            <h2 className="text-3xl sm:text-6xl font-extrabold text-green-900 tracking-tight drop-shadow-lg">
+              Netsanet Yirga
+            </h2>
+            <p className="text-xl sm:text-3xl font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent tracking-wide">
+              Founder & CEO, Grove Link Consult
+            </p>
+            <p className="text-sm sm:text-lg text-green-900 font-semibold max-w-md mx-auto sm:mx-0 leading-relaxed drop-shadow-md tracking-wide">
+              Certified Management Consultant | Strategic Advisor | Former
+              Executive Banker and Lecturer
+            </p>
+          </div>
+
+          {/* Image */}
+          <motion.img
+            src="/netsanet.jpg"
+            alt="Netsanet Yirga"
+            className="w-52 h-52 rounded-3xl shadow-2xl object-cover cursor-pointer border-4 border-yellow-400 transition-transform duration-500 ease-in-out hover:scale-110 hover:shadow-yellow-500/80"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
         </div>
 
-        <motion.img
-          src="/netsanet.jpg"
-          alt="Netsanet Yirga"
-          className="w-44 h-44 rounded-3xl shadow-2xl object-cover cursor-pointer
-            border-4 border-yellow-400
-            transition-transform duration-300 ease-in-out
-            hover:scale-105 hover:shadow-yellow-400/60"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        />
-      </div>
-      {/* Bio paragraphs section with proper layout */}
-      <div className="max-w-4xl mx-auto space-y-10 text-justify">
-        {bioParagraphs.map((text, index) => (
-          <motion.p
-            key={index}
-            className="border-l-4 border-yellow-400 pl-6 pr-4 text-gray-900 text-lg font-medium leading-relaxed
-        bg-yellow-50/70 backdrop-blur-sm
-        py-4 rounded-lg shadow-lg hover:shadow-yellow-300 transition-shadow duration-300"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.12 }}
-            viewport={{ once: true }}
-          >
-            {text}
-          </motion.p>
-        ))}
-      </div>
+        {/* Bio Section */}
+        <div className="max-w-4xl mx-auto space-y-12 text-justify">
+          {isMobile ? (
+            <div className="bg-yellow-50/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-yellow-400/30 transition-shadow duration-400 p-6 border-l-6 border-yellow-400 flex flex-col">
+              {/* Paragraph text first */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={currentIndex}
+                  className="text-gray-900 text-sm sm:text-lg font-medium leading-relaxed tracking-wide"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {bioParagraphs[currentIndex]}
+                </motion.p>
+              </AnimatePresence>
 
-      {/* Expertise Section */}
-      <div className="mt-20">
-        <h3 className="text-3xl font-extrabold text-green-800 mb-8 border-b-4 border-green-400 inline-block drop-shadow-sm">
-          Areas of Expertise
-        </h3>
-        <div className="flex flex-wrap gap-5 mt-8 justify-center sm:justify-start">
-          {expertiseList.map((item, i) => (
-            <motion.span
-              key={i}
-              className="bg-gradient-to-r from-green-300 to-green-500 text-white px-5 py-3 rounded-full text-base font-semibold shadow-lg cursor-default
-                hover:from-green-400 hover:to-green-600 hover:shadow-xl hover:scale-105
-                transition-transform duration-300 ease-in-out select-none"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: i * 0.12 }}
-            >
-              {item}
-            </motion.span>
-          ))}
+              {/* Navigation buttons below paragraph */}
+              <div className="mt-6 flex justify-between px-4">
+                <button
+                  onClick={handleBack}
+                  className="text-green-700 hover:text-green-900 text-4xl transition-transform duration-300 hover:scale-125 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600 bg-yellow-100/80 backdrop-blur-sm"
+                  aria-label="Previous"
+                >
+                  <FiChevronLeft />
+                </button>
+
+                <button
+                  onClick={handleNext}
+                  className="text-green-700 hover:text-green-900 text-4xl transition-transform duration-300 hover:scale-125 p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600 bg-yellow-100/80 backdrop-blur-sm"
+                  aria-label="Next"
+                >
+                  <FiChevronRight />
+                </button>
+              </div>
+            </div>
+          ) : (
+            bioParagraphs.map((text, index) => (
+              <motion.p
+                key={index}
+                className="border-l-6 border-yellow-400 pl-8 pr-6 text-gray-900 text-lg font-medium leading-relaxed tracking-wide bg-yellow-50/90 backdrop-blur-sm py-6 rounded-xl shadow-md hover:shadow-yellow-400/30 transition-shadow duration-400"
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+              >
+                {text}
+              </motion.p>
+            ))
+          )}
+        </div>
+
+        {/* Expertise */}
+        <div className="mt-24">
+          <h3 className="text-4xl font-extrabold text-green-800 mb-12 border-b-4 border-green-500 inline-block drop-shadow-md tracking-tight">
+            Areas of Expertise
+          </h3>
+          <div className="flex flex-wrap gap-6 mt-10 justify-center sm:justify-start">
+            {expertiseList.map((item, i) => (
+              <motion.span
+                key={i}
+                className="bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg cursor-default select-none
+                  hover:from-green-500 hover:to-green-700 hover:shadow-xl hover:scale-110 transition-transform duration-300 ease-in-out"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.15 }}
+              >
+                {item}
+              </motion.span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 export default function HeroSection() {
   return (
@@ -7,13 +7,11 @@ export default function HeroSection() {
       className="relative py-20 text-center bg-cover bg-center text-white"
       style={{ backgroundImage: "url('/back.jpg')" }}
     >
-      {/* Semi-transparent black overlay */}
       <div
         className="absolute inset-0 bg-black opacity-50 z-0"
         aria-hidden="true"
       ></div>
 
-      {/* Content */}
       <div className="relative z-10 px-4 flex flex-col items-center">
         <img
           src="/logo.jpg"
@@ -41,12 +39,15 @@ export default function HeroSection() {
           to create meaningful, sustainable change.
         </p>
 
-        <Link
-          to="/contact"
-          className="inline-block px-8 py-3 bg-yellow-400 text-green-900 font-bold rounded-2xl hover:bg-yellow-500 transition shadow-lg hover:shadow-xl z-10"
+        <ScrollLink
+          to="contact"
+          smooth={true}
+          duration={500}
+          offset={-70} // adjust if you have fixed headers
+          className="cursor-pointer inline-block px-8 py-3 bg-yellow-400 text-green-900 font-bold rounded-2xl hover:bg-yellow-500 transition shadow-lg hover:shadow-xl z-10"
         >
           Let’s Work Together
-        </Link>
+        </ScrollLink>
       </div>
     </section>
   );
