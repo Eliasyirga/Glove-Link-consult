@@ -61,7 +61,7 @@ export default function Founder() {
 
           {/* Image */}
           <motion.img
-            src="/netsanet.jpg"
+            src="/photo.jpg"
             alt="Netsanet Yirga"
             className="w-36 sm:w-52 h-36 sm:h-52 rounded-3xl shadow-xl object-cover border-4 border-yellow-400 hover:scale-105 transition-transform"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -122,21 +122,37 @@ export default function Founder() {
 
         {/* Expertise Tags */}
         <div className="mt-16 sm:mt-24">
-          <h3 className="text-xl sm:text-3xl font-extrabold text-green-800 mb-8 border-b-4 border-green-500 inline-block">
-            Areas of Expertise
+          <h3 className="text-xl sm:text-3xl font-extrabold text-green-800 mb-8 inline-block max-w-6xl mx-auto px-4 sm:px-12">
+            <span className="border-b-2 border-green-500 pb-1">
+              Areas of Expertise
+            </span>
           </h3>
-          <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
-            {expertiseList.map((item, index) => (
-              <motion.span
-                key={index}
-                className="bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold shadow hover:scale-105 transition-transform"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                {item}
-              </motion.span>
-            ))}
+
+          {/* FULL WIDTH WRAPPER */}
+          <div className="w-full max-w-none mx-auto px-0">
+            <div className="flex flex-wrap justify-center sm:justify-start gap-y-3 gap-x-0 sm:gap-4 max-w-6xl mx-auto px-4 sm:px-12">
+              {expertiseList.map((item, index) => (
+                <motion.span
+                  key={index}
+                  className="
+            bg-gradient-to-r from-green-400 to-green-600 
+            text-white 
+            px-4 sm:px-6
+            h-12
+            w-full sm:w-auto
+            flex items-center justify-center
+            text-sm sm:text-base font-semibold shadow 
+            hover:scale-105 transition-transform
+            rounded-lg sm:rounded-full
+          "
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  {item}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

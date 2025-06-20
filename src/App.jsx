@@ -1,8 +1,9 @@
 import React from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home";
 
-// Optional: placeholder for future routes
+// Define router
 const router = createBrowserRouter([
   {
     path: "/",
@@ -10,6 +11,11 @@ const router = createBrowserRouter([
   },
 ]);
 
+// Wrap the RouterProvider with HelmetProvider
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+  );
 }

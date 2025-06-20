@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://grovelinkconsult.com/sitemap.xml

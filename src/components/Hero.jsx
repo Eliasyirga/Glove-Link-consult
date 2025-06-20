@@ -41,7 +41,9 @@ export default function HeroSection() {
           }}
         >
           Welcome to Grove Link Consult, where your vision meets expert guidance
-          to create meaningful, sustainable change.
+          to create meaningful, sustainable change. We partner with
+          organizations across sectors to deliver tailored solutions that drive
+          real, lasting impact.
         </p>
 
         {/* CTA Button */}
