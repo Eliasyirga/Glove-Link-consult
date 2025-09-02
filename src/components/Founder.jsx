@@ -41,19 +41,19 @@ export default function Founder() {
     );
 
   return (
-    <section className="w-full py-16 sm:py-24 bg-gradient-to-tr from-green-100 via-white to-yellow-100 shadow-xl">
+    <section className="w-full py-16 sm:py-24 bg-gradient-to-tr from-green-50 via-white to-yellow-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-12 rounded-3xl">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12 mb-16 sm:mb-20">
+        <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12 mb-12 sm:mb-16">
           {/* Text Info */}
-          <div className="flex-1 text-center sm:text-left space-y-3">
-            <h2 className="text-2xl sm:text-5xl font-extrabold text-green-900 leading-tight tracking-tight">
+          <div className="flex-1 text-center sm:text-left space-y-2 sm:space-y-3">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-green-900">
               Netsanet Yirga
             </h2>
-            <p className="text-base sm:text-2xl font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+            <p className="text-sm sm:text-xl font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
               Founder & CEO, Grove Link Consult
             </p>
-            <p className="text-sm sm:text-base text-green-900 max-w-md mx-auto sm:mx-0 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-green-900 max-w-md mx-auto sm:mx-0 leading-relaxed">
               Certified Management Consultant | Strategic Advisor | Former
               Executive Banker and Lecturer
             </p>
@@ -63,7 +63,7 @@ export default function Founder() {
           <motion.img
             src="/photo.jpg"
             alt="Netsanet Yirga"
-            className="w-36 sm:w-52 h-36 sm:h-52 rounded-3xl shadow-xl object-cover border-4 border-yellow-400 hover:scale-105 transition-transform"
+            className="w-32 sm:w-48 h-32 sm:h-48 rounded-2xl shadow-lg object-cover border-4 border-yellow-400 hover:scale-105 transition-transform"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -72,13 +72,13 @@ export default function Founder() {
         </div>
 
         {/* Bio */}
-        <div className="max-w-4xl mx-auto space-y-10 text-justify">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 text-justify">
           {isMobile ? (
-            <div className="bg-yellow-50/90 backdrop-blur-sm rounded-xl shadow-md p-5 border-l-4 border-yellow-400">
+            <div className="bg-yellow-50 rounded-xl shadow-md p-4 border-l-4 border-yellow-400">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={currentIndex}
-                  className="text-gray-900 text-[clamp(0.85rem,2.5vw,1rem)] leading-relaxed"
+                  className="text-gray-900 text-sm sm:text-base leading-relaxed"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
@@ -89,16 +89,16 @@ export default function Founder() {
               </AnimatePresence>
 
               {/* Mobile Nav */}
-              <div className="mt-6 flex justify-between items-center">
+              <div className="mt-4 flex justify-between items-center">
                 <button
                   onClick={handleBack}
-                  className="text-green-700 hover:text-green-900 text-2xl p-2 bg-yellow-100 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600"
+                  className="text-green-700 hover:text-green-900 text-xl p-2 bg-yellow-100 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600"
                 >
                   <FiChevronLeft />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="text-green-700 hover:text-green-900 text-2xl p-2 bg-yellow-100 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600"
+                  className="text-green-700 hover:text-green-900 text-xl p-2 bg-yellow-100 rounded-full focus:outline-none focus:ring-2 focus:ring-green-600"
                 >
                   <FiChevronRight />
                 </button>
@@ -108,10 +108,10 @@ export default function Founder() {
             bioParagraphs.map((text, i) => (
               <motion.p
                 key={i}
-                className="border-l-4 border-yellow-400 pl-6 pr-4 py-6 text-gray-900 text-base sm:text-lg bg-yellow-50/90 rounded-xl shadow-md leading-relaxed"
-                initial={{ opacity: 0, x: -40 }}
+                className="border-l-4 border-yellow-400 pl-5 pr-4 py-4 bg-yellow-50 rounded-xl shadow-md text-gray-900 text-sm sm:text-base md:text-lg leading-relaxed"
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
                 viewport={{ once: true }}
               >
                 {text}
@@ -121,40 +121,25 @@ export default function Founder() {
         </div>
 
         {/* Expertise Tags */}
-        <div className="mt-16 sm:mt-24">
-          <h3 className="text-xl sm:text-3xl font-extrabold text-green-800 mb-8 inline-block max-w-6xl mx-auto px-4 sm:px-12">
+        <div className="mt-12 sm:mt-16">
+          <h3 className="text-lg sm:text-2xl font-extrabold text-green-800 mb-6 text-center sm:text-left">
             <span className="border-b-2 border-green-500 pb-1">
               Areas of Expertise
             </span>
           </h3>
 
-          {/* FULL WIDTH WRAPPER */}
-          <div className="w-full max-w-none mx-auto px-0">
-            <div className="flex flex-wrap justify-center sm:justify-start gap-y-4 gap-x-0 sm:gap-4 max-w-6xl mx-auto px-4 sm:px-12">
-              {expertiseList.map((item, index) => (
-                <motion.span
-                  key={index}
-                  className="
-            relative
-            w-full sm:w-auto h-14
-            bg-gradient-to-br from-green-500 via-green-600 to-emerald-600
-            text-white text-sm sm:text-base font-semibold
-            px-6 sm:px-8 py-3
-            flex items-center justify-center
-            rounded-xl sm:rounded-full
-            shadow-md shadow-green-300/30
-            backdrop-blur-md bg-opacity-80
-            hover:scale-[1.03] hover:shadow-lg transition-all duration-300
-          "
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 hidden sm:inline-block"></span>
-                  <span className="text-center w-full">{item}</span>
-                </motion.span>
-              ))}
-            </div>
+          <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
+            {expertiseList.map((item, index) => (
+              <motion.span
+                key={index}
+                className="w-full sm:w-auto h-12 sm:h-14 bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 text-white text-xs sm:text-sm md:text-base font-semibold px-4 sm:px-6 flex items-center justify-center rounded-xl shadow-md hover:scale-[1.05] transition-transform duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                {item}
+              </motion.span>
+            ))}
           </div>
         </div>
       </div>

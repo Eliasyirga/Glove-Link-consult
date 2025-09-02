@@ -1,60 +1,60 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { Mail, Phone, MapPin } from "lucide-react"; // Optional for icons
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const links = ["home", "about", "services", "contact"];
 
   return (
-    <footer className="relative bg-gradient-to-tr from-green-50 via-green-100 to-lime-100 text-green-900 py-24 px-6 sm:px-12 lg:px-32 font-sans overflow-hidden shadow-xl">
+    <footer className="relative bg-gradient-to-tr from-green-700 via-green-600 to-green-500 text-green-50 py-20 px-6 sm:px-12 lg:px-24 font-sans overflow-hidden shadow-xl">
       {/* Decorative blurred circles */}
-      <div className="pointer-events-none absolute top-[-60px] left-[-60px] w-72 h-72 rounded-full bg-green-300 opacity-30 blur-3xl animate-pulse"></div>
-      <div className="pointer-events-none absolute bottom-[-80px] right-[-80px] w-96 h-96 rounded-full bg-lime-400 opacity-20 blur-3xl animate-pulse"></div>
+      <div className="pointer-events-none absolute top-[-60px] left-[-60px] w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-green-400 opacity-25 blur-3xl animate-blob"></div>
+      <div className="pointer-events-none absolute bottom-[-80px] right-[-80px] w-80 h-80 rounded-full bg-green-500 opacity-20 blur-3xl animate-blob animation-delay-3000"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-16 text-center md:text-left">
+      <div className="relative z-10 max-w-7xl mx-auto grid gap-16 md:grid-cols-2 text-center md:text-left">
         {/* Contact Section */}
         <div className="space-y-6">
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-green-900 tracking-tight">
+          <h3 className="text-3xl sm:text-4xl font-bold tracking-tight">
             Get in Touch
           </h3>
-          <p className="text-green-800 leading-relaxed max-w-lg mx-auto md:mx-0">
-            We’d love to collaborate and create lasting impact. Reach out for
-            strategic advice, project support, or partnerships.
+          <p className="leading-relaxed max-w-lg mx-auto md:mx-0 text-green-100 text-base sm:text-lg">
+            Reach out for strategic advice, project support, or collaborations.
+            Our team is ready to guide you.
           </p>
 
-          <div className="space-y-6 text-green-900 text-base sm:text-lg">
+          <div className="space-y-4 text-green-50 text-base sm:text-base font-semibold">
             <div className="flex items-start gap-3 justify-center md:justify-start">
-              <MapPin className="w-6 h-6 text-lime-600" />
-              <address className="not-italic text-green-700">
+              <MapPin className="w-6 h-6 text-green-200 mt-1" />
+              <address className="not-italic leading-relaxed">
                 Grove Link Consult <br />
                 Legehar, ORDA Ethiopia Building <br />
                 Addis Ababa
               </address>
             </div>
             <div className="flex items-center gap-3 justify-center md:justify-start">
-              <Phone className="w-6 h-6 text-lime-600" />
+              <Phone className="w-6 h-6 text-green-200" />
               <a
                 href="tel:+251911572382"
-                className="underline hover:text-lime-600 transition"
+                className="hover:text-green-200 transition font-semibold"
               >
                 +251 911 572 382
               </a>
             </div>
             <div className="flex flex-col gap-2 items-center md:items-start">
               <div className="flex items-center gap-3">
-                <Mail className="w-6 h-6 text-lime-600" />
+                <Mail className="w-6 h-6 text-green-200" />
                 <a
                   href="mailto:netsanetyrg@gmail.com"
-                  className="underline hover:text-lime-600 transition"
+                  className="hover:text-green-200 transition font-semibold"
                 >
                   netsanetyrg@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-6 h-6 text-lime-600" />
+                <Mail className="w-6 h-6 text-green-200" />
                 <a
                   href="mailto:info@grovelinkconsult.com"
-                  className="underline hover:text-lime-600 transition"
+                  className="hover:text-green-200 transition font-semibold"
                 >
                   info@grovelinkconsult.com
                 </a>
@@ -64,11 +64,9 @@ export default function Footer() {
         </div>
 
         {/* Links and Social */}
-        <div className="space-y-8">
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-green-900">
-            Quick Links
-          </h3>
-          <ul className="space-y-4 font-medium text-green-800">
+        <div className="space-y-6">
+          <h3 className="text-3xl sm:text-4xl font-bold">Quick Links</h3>
+          <ul className="flex flex-col gap-3 font-medium text-green-100 text-base sm:text-base">
             {links.map((link) => (
               <li key={link}>
                 <Link
@@ -77,17 +75,16 @@ export default function Footer() {
                   duration={500}
                   spy={true}
                   offset={-80}
-                  className="cursor-pointer hover:text-lime-600 transition relative group inline-block"
+                  className="cursor-pointer relative group hover:text-green-200 transition inline-block font-semibold"
                 >
                   {link.charAt(0).toUpperCase() + link.slice(1)}
-                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-lime-600 rounded transition-all group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-green-200 rounded transition-all group-hover:w-full" />
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* Social icons */}
-          <div className="flex justify-center md:justify-start gap-6">
+          <div className="flex justify-center md:justify-start gap-4 mt-2">
             {[
               {
                 label: "Twitter",
@@ -114,10 +111,10 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="hover:text-lime-600 transition transform hover:scale-110 duration-300"
+                className="hover:text-green-200 transition transform hover:scale-110 duration-300"
               >
                 <svg
-                  className="w-8 h-8 sm:w-9 sm:h-9 fill-current"
+                  className="w-6 h-6 sm:w-7 sm:h-7 fill-current"
                   viewBox="0 0 24 24"
                 >
                   <path d={svgPath} />
@@ -132,16 +129,37 @@ export default function Footer() {
       <div className="mt-12 text-center">
         <button
           onClick={() => scroll.scrollToTop({ duration: 600 })}
-          className="bg-lime-500 hover:bg-lime-600 text-white font-semibold px-6 py-2 rounded-full shadow-md transition transform hover:scale-105"
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow-md transition transform hover:scale-105"
         >
-          Back to Top ↑
+          ↑ Back to Top
         </button>
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-10 border-t border-lime-400 pt-6 text-center text-green-700 text-sm tracking-wide">
+      <div className="mt-10 border-t border-green-400 pt-6 text-center text-green-50 text-sm tracking-wide">
         © {new Date().getFullYear()} Grove Link Consult. All rights reserved.
       </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -20px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 30px) scale(0.9);
+          }
+        }
+        .animate-blob {
+          animation: blob 10s infinite ease-in-out;
+        }
+        .animation-delay-3000 {
+          animation-delay: 3s;
+        }
+      `}</style>
     </footer>
   );
 }
